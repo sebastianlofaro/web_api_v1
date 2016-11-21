@@ -1,0 +1,13 @@
+.hand {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 738px;
+  margin: 0 auto;
+  padding: 0;
+  justify-content: center;
+}
+
+.card {
+  list-style: none;
+  margin: 10px;
+}
