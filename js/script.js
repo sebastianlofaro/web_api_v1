@@ -6,7 +6,7 @@ function drawSixCards() {
     hand = data;
     var cardsHTML = '<ul class="hand">';
     $.each(data.cards, function(key, value) {
-      cardsHTML += '<li class="card"><a href="#" id=""><img src="' + value.image + '" alt="" /></a></li>';
+      cardsHTML += '<li class="card" id="' + key + '"><img src="' + value.image + '" alt="" /></li>';
     });
     cardsHTML += '</ul>'
     $("#cards").html(cardsHTML);
@@ -14,18 +14,30 @@ function drawSixCards() {
   $.getJSON(deckOfCardsAPI, displayCards);
 };
 
+$("#new_hand").on('click', function() {
+  drawSixCards();
+  console.log("Button clicked!");
+});
+
+$("#cards").on('click', '.card', function() {
+  var cardNumber = $(this).attr("id");
+
+  $(".lightbox img").attr("src", hand.cards[cardNumber].image)
+  $(".lightbox h2").text(hand.cards[cardNumber].value + " of " + hand.cards[cardNumber].suit);
+  $(".lightbox").removeClass("hidden");
+
+});
+
+
 $(document).ready(function(){
   drawSixCards();
-  
-  $(".card").on('click', function() {
-    console.log("card clicked");
-  });
 
-  $("#new_hand").on('click', function() {
-    drawSixCards();
-    console.log("Button clicked!");
+  $(".lightbox").on('click', function() {
+    $(".lightbox").addClass("hidden");
   });
 });
+
+
 
 
 
