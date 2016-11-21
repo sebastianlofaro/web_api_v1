@@ -16,15 +16,18 @@ function drawSixCards() {
 
 $(document).ready(function(){
   drawSixCards();
+  
   $(".card").on('click', function() {
     console.log("card clicked");
   });
+
+  $("#new_hand").on('click', function() {
+    drawSixCards();
+    console.log("Button clicked!");
+  });
 });
 
-$("#new_hand").on('click', function() {
-  drawSixCards();
-  console.log("Button clicked!");
-});
+
 
 // $(".test").on('click', function() {
 //   console.log("card clicked");
